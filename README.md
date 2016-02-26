@@ -66,12 +66,12 @@ Calls `jtoast.fire()` with a *message*. It will "fade out" after the default `ti
 
 **code**
 
-1.    `jtoast.init({'id':'alert','timeout':5000});`
-2.    `jtoast.message({`
-3.    `   'message':'<p>This is another messge.<p>This works the with HTML inside it.<p>',`
-4.    `   'class':'alert',`
-5.    `});`
-6.    `jtoast.fire();`
+    jtoast.init({'id':'alert','timeout':5000});
+    jtoast.message({
+       'message':'<p>This is another messge.<p>This works the with HTML inside it.<p>',
+       'class':'alert',
+    });
+    jtoast.fire();
 
 **explanation**
 
