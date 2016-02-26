@@ -47,6 +47,7 @@ var jtoast = {
         console.log('message:',JSON.stringify(obj))
         jtoast.obj = document.getElementById(jtoast.id);
         if ('class' in obj) {
+            // remove any clases added after 
             if (jtoast.extraClass.length) {
                 jtoast.obj.classList.remove(jtoast.extraClass);
             }
