@@ -3,8 +3,8 @@ a popup notificaion, like toast(), that uses only HTML,CSS, and Javascript
 
 [[LIVE DEMO]()] - [[Blog]()]
 
-- Synopsis](#synopsis)
-- Methods](#methods)
+- [Synopsis](#synopsis)
+- [Methods](#methods)
   - [init()](#init)
   - [message()](#message)
   - [fire()](#fire)
