@@ -12,10 +12,47 @@ var jtoast = {
     init : function (parms) {
         console.log("jtoast.init:",JSON.stringify(parms));
         if (parms) {
-            jtoast.timeout   = (parms.timeout) ? parms.timeout : 7000;
             jtoast.id        = (parms.id)      ? parms.id      : 'jtoast';
+            jtoast.timeout   = (parms.timeout) ? parms.timeout : 7000;
         }
     },
+    message : function (obj) {
+        console.log('message:',JSON.stringify(obj))
+        if ('id' in obj || 'timeout' in obj) {
+            jtoast.init(obj);
+        }
+        jtoast.obj = document.getElementById(jtoast.id);
+        if ('class' in obj) {
+            // remove any clases added after 
+            if (jtoast.extraClass.length) {
+                jtoast.obj.classList.remove(jtoast.extraClass);
+            }
+            jtoast.obj.classList.add(obj.class);
+            // save the class(es) added
+            jtoast.extraClass = obj.class;
+        }
+        if ('message' in obj) {
+            jtoast.obj.innerHTML = obj.message;
+        }
+    },
+    fire : function (obj) {
+        // Set the message
+        if (obj) { jtoast.message(obj); }
+        jtoast.toggle();        
+    },
+    extingish : function (obj, timeout) {
+        // change the message, if we have a new one.
+        if (obj) { jtoast.message(obj); }
+        // remove from screen, after timeout
+        if (timeout) {
+            setTimeout(function () { jtoast.toggle(); }, timeout);
+        } else {
+            jtoast.toggle();
+        }
+    },
+    //
+    // This function deals with the visibility and fading.
+    //
     toggle : function () {
         console.log('jtoast.toggle:', jtoast.visible);
         jtoast.obj = document.getElementById(jtoast.id);
@@ -41,36 +78,6 @@ var jtoast = {
             if (jtoast.once > 0) {
                 setTimeout(jtoast.toggle, jtoast.timeout);
             }
-        }
-    },
-    message : function (obj) {
-        console.log('message:',JSON.stringify(obj))
-        jtoast.obj = document.getElementById(jtoast.id);
-        if ('class' in obj) {
-            // remove any clases added after 
-            if (jtoast.extraClass.length) {
-                jtoast.obj.classList.remove(jtoast.extraClass);
-            }
-            jtoast.obj.classList.add(obj.class);
-            jtoast.extraClass = obj.class;
-        }
-        if ('message' in obj) {
-            jtoast.obj.innerHTML = obj.message;
-        }
-    },
-    fire : function (obj) {
-        // Set the message
-        if (obj) { jtoast.message(obj); }
-        jtoast.toggle();        
-    },
-    extingish : function (obj, timeout) {
-        // change the message, if we have a new one.
-        if (obj) { jtoast.message(obj); }
-        // remove from screen, after timeout
-        if (timeout) {
-            setTimeout(function () { jtoast.toggle(); }, timeout);
-        } else {
-            jtoast.toggle();
         }
     }
 };

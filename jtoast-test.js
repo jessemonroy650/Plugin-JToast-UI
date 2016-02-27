@@ -17,12 +17,12 @@ function loadToastButtons() {
     });
     //
     document.getElementById('customButton').addEventListener('click', function() {
-        jtoast.init({'id':'alert','timeout':5000});
-        jtoast.message({
+        jtoast.fire({
+           'id':'alert',
+           'timeout':8000,
            'message':'This is another messge.<br><br>This works the with HTML inside it.',
            'class':'custom',
         });
-        jtoast.fire();
     });
     //    
     document.getElementById('alt1').addEventListener('click', function() {

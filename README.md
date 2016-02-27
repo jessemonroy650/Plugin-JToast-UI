@@ -5,19 +5,28 @@ a popup notificaion, like toast(), that uses only HTML,CSS, and Javascript
 
 ## Synopsis ##
 
-This library is local notifications. It use a popup `<div>` that uses `postion:absolute`. The notification has only one pane, and therefore only one window for a message. The notification is initially hidden and not visible. Once `fire()` is called, the notification goes through the process of being visible. 
+This library is for local notifications. It use a `<div>` popup that uses `postion:absolute`. The notification has only one pane, and therefore only one window for a message. The notification is initially hidden and not visible. Once `fire()` is called, the notification goes through the process of becoming visible. 
 
-The window can be customized via `init()` and `message()`. The window becomes visible with `fire()` and hidden with `extingish()`. 
+The window can be customized via `init()` and `message()`. The window becomes visible with `fire()` and hidden with `extingish()`. You should not have to use `toggle()`.
 
 ## Methods ##
 
 method        |  purpose
 --------------|-----------
 `init()`      | set the `id` and `timeout` to the window 
-`toggle()`    | actually make the window hidden and visible
 `message()`   | set the text and style to the message
-`fire()`      | launch the message, making it visible
-`extingish()` | manually halt the message, making it hidden
+`fire()`      | launch the message &ndash; making it visible
+`extingish()` | manually halt the message &ndash; making it hidden
+`toggle()`    | actually make the window hidden and visible
+
+**How the methods work**
+
+If you look at the code, this is the sequence.
+
+    - `fire() -> `init()` -> `message()`  -> `toggle()`
+
+    - `extingish()` ->  `init()` -> `message()`  -> `toggle()`
+
 
 
 #### `init()` ####
@@ -52,7 +61,7 @@ no parameters
 
 **code**
 
-1. `jtoast.fire({'message':'I am toast.'});`
+    `jtoast.fire({'message':'I am toast.'});`
 
 **explanation**
 
@@ -76,11 +85,11 @@ Calls `jtoast.fire()` with a *message*. It will "fade out" after the default `ti
 **explanation**
 
 1. Select the div with `id=alert` and set the `timeout` to 5000 (5 seconds)
-2. Set the message with `jtoast.message()`
-3. Set the actual message
+2. call `jtoast.message()`
+3. Set the text to the notification
 4. Modify the class of the message box with the class `alert`
 5. close the call
-6. launch the message box and have it automatically fade after the `timeout` (5 seconds).
+6. launch the notification and have it automatically fade after the `timeout` (5 seconds).
 
 ### How It Use it ###
 
