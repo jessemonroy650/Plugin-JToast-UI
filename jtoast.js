@@ -17,7 +17,6 @@ var jtoast = {
         }
     },
     message : function (obj) {
-        console.log('message:',JSON.stringify(obj))
         if ('id' in obj || 'timeout' in obj) {
             jtoast.init(obj);
         }
@@ -54,7 +53,6 @@ var jtoast = {
     // This function deals with the visibility and fading.
     //
     toggle : function () {
-        console.log('jtoast.toggle:', jtoast.visible);
         jtoast.obj = document.getElementById(jtoast.id);
         if (jtoast.visible === 0) {
             jtoast.obj.style.transitionProperty = 'opacity';
@@ -79,5 +77,6 @@ var jtoast = {
                 setTimeout(jtoast.toggle, jtoast.timeout);
             }
         }
+        console.log('jtoast.toggle:', jtoast.visible);
     }
 };

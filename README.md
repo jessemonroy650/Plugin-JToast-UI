@@ -39,7 +39,7 @@ If you look at the code, this is the sequence:
 
 What should be evident is that the calls are scoping. Meaning you can call
 
-- `init()` &mdash;> `message()` &mdash;> `fire()` in sequence
+- `init()`, `message()`, and `fire()` in sequence
 - **_OR_** *just call*
 - `fire()` with all the parameters that you would put in `init()` and `message()`
 
@@ -62,23 +62,15 @@ accepts a JSON with the following parameters:
 - `class` - a CSS class with the attributes to use
 
 ### <a name=fire>`fire(json)`</a> ###
-Accepts a JSON with the following parameters:
 
-- `id` - element `id` of the &lt;div&gt; you are using
-- `timeout` - the amount of time to display the notification (in milliseconds)
-- `message` - text of message
-- `class` - a CSS class with the attributes to use
+- Accepts the same JSON parameters as [`message()`](#message)
 
 ### <a name=extinguish>`extinguish(json, timeout)`</a> ###
-Accepts a JSON with the following parameters:
 
-- `id` - element `id` of the &lt;div&gt; you are using
-- `message` - text of message
-- `class` - a CSS class with the attributes to use
+- Accepts the same JSON parameters as [`message()`](#message), except timeout is separate
+- `timeout` - the amount of time to **wait before hiding** the notification (in milliseconds)
 
-* `timeout` - the amount of time to **wait before hiding** the notification (in milliseconds)
-
-
+*NOTE:* The `timeout` in this method is separate because it is the \*timeout\* before the notification starts to fade. However, if you do *not* give a \*timeout\* then the notification immediately starts to fade to invisibile.
 
 ## <a name=examples>Examples</a> ##
 
@@ -86,7 +78,7 @@ Accepts a JSON with the following parameters:
 
 **HTML**
 
-    <div id=toast class=toast></div>
+    <div id=jtoast class=jtoast></div>
 
 **code**
 
