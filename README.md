@@ -33,7 +33,7 @@ method         |  purpose
 `message()`    | set the text and *class* to the message
 `fire()`       | launch the message &ndash; making it visible
 `extinguish()` | manually halt the message &ndash; making it hidden
-`toggle()`     | actually make the notifications hidden and visible
+`toggle()`     | actually make the notifications visible and hidden
 
 **How the methods work**
 
@@ -53,7 +53,7 @@ What should be evident is that the calls are scoping. Meaning you can call
 Accepts a JSON with the following parameters:
 
 - `id` - element `id` of the &lt;div&gt; you are using. *Defaults to 'jtoast'.*
-- `timeout` - the amount of time to display the notification (in milliseconds) before fading out. Defaults to 7000 (milliseconds - 7 seconds). If set to zero (0=string), then it never fades.
+- `timeout` - the amount of time to display the notification (in milliseconds) before fading out. If set to zero (0=string), then it never fades.  *Defaults to 7000 (milliseconds - 7 seconds).*
 
 ### `toggle()` ###
 NO parameters.
@@ -62,7 +62,7 @@ NO parameters.
 Accepts a JSON with the following parameters:
 
 - `id` - the element `id` of the &lt;div&gt; you are using. *Defaults to 'jtoast'.*
-- `timeout` - the amount of time to display the notification (in milliseconds) before fading out. Defaults to 7000 (milliseconds - 7 seconds). If set to zero (0=string), then it never fades.
+- `timeout` - the amount of time to display the notification (in milliseconds) before fading out. If set to zero (0=string), then it never fades.  *Defaults to 7000 (milliseconds - 7 seconds).*
 - `message` - the text of message. *Defaults to no change in the text.*
 - `class` - CSS class(es) with the attributes to use. *Defaults to 'jtoast'.*
 
@@ -73,7 +73,7 @@ Accepts a JSON with the following parameters:
 ### <a name=extinguish>`extinguish(json, timeout)`</a> ###
 
 - Accepts the same JSON parameters as [`message()`](#message), except timeout is separate
-- `timeout` - the amount of time to **wait before hiding** the notification (in milliseconds). Defaults to immediate fade. If set to zero (0=string), then it immediately fades.
+- `timeout` - the amount of time to **wait before hiding** the notification (in milliseconds). If set to zero (0=string), then it immediately fades. *Defaults to immediate fade.*
 
 ### <a name=timeout>Why two `timeout`</a> ###
 
