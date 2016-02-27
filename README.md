@@ -26,8 +26,13 @@ If you look at the code, this is the sequence.
 - `fire()` &mdash;> `init()` &mdash;> `message()` &mdash;> `toggle()`
 - `extingish()` &mdash;> `init()` &mdash;> `message()` &mdash;> `toggle()`
 
+What should be evident is that the calls are scoping. Meaning you can call
 
+- `init()` &mdash;> `message()` &mdash;> `fire()` in sequence
+- **_OR_** *just call*
+- `fire()` with all the parameters that you would put in `init()` and `message()`
 
+----
 ### `init()` ###
 - `id`
 - `timeout` 
@@ -35,15 +40,15 @@ If you look at the code, this is the sequence.
 ### `toggle()` ###
 no parameters
 
-#### `message()` ####
+### `message()` ###
 - `message`
 - `class`
 
-#### `fire()` ####
+### `fire()` ###
 - `message`
 - `class`
 
-#### `extingish()` ####
+### `extingish()` ###
 - `message`
 - `class`
 - `timeout` 
