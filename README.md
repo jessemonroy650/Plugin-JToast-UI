@@ -23,9 +23,9 @@ The notification is initially hidden and not visible. Once `fire()` is called, t
 
 ## <a name=method>Methods</a> ##
 
-There are five (5) methods for this library. If you need it quick, just used `fire()` and `extinguish()`. For more grainular control, there is `init()` and `message()`.
+There are five (5) methods for this library. If you need it quick, just used `fire()` or `extinguish()`. For more grainular control, there is `init()` and `message()`.
 
-The notification can be customized via `init()` and `message()`. The notification becomes visible with `fire()` and hidden with `extinguish()`. You should not have to use `toggle()`.
+The notification can be customized via `init()` and `message()`. The purpose of `fire()` is to make a notification visible, and with `extinguish()` the notification becomes hidden. You should not have to use `toggle()`.
 
 method         |  purpose
 ---------------|-----------
@@ -42,7 +42,7 @@ If you look at the code, this is the sequence:
 - `fire()` &mdash;> `init()` &mdash;> `message()` &mdash;> `toggle()`
 - `extinguish()` &mdash;> `init()` &mdash;> `message()` &mdash;> `toggle()`
 
-What should be evident is that the calls are scoping. Meaning you can call
+What may not be evident is that the calls are scoping. Meaning you can call
 
 - `init()`, `message()`, and `fire()` in sequence
 - **_OR_** *just call*
@@ -53,7 +53,7 @@ What should be evident is that the calls are scoping. Meaning you can call
 Accepts a JSON with the following parameters:
 
 - `id` - element `id` of the &lt;div&gt; you are using. *Defaults to 'jtoast'.*
-- `timeout` - the amount of time to display the notification (in milliseconds) before fading out. If set to zero (0=string), then it never fades.  *Defaults to 7000 (milliseconds - 7 seconds).*
+- `timeout` - the amount of time to display the notification (in milliseconds) before fading out. If set to zero ('0'=string), then it never fades.  *Defaults to 7000 (milliseconds - 7 seconds).*
 
 ### `toggle()` ###
 NO parameters.
@@ -62,7 +62,7 @@ NO parameters.
 Accepts a JSON with the following parameters:
 
 - `id` - the element `id` of the &lt;div&gt; you are using. *Defaults to 'jtoast'.*
-- `timeout` - the amount of time to display the notification (in milliseconds) before fading out. If set to zero (0=string), then it never fades.  *Defaults to 7000 (milliseconds - 7 seconds).*
+- `timeout` - the amount of time to display the notification (in milliseconds) before fading out. If set to zero ('0'=string), then it never fades.  *Defaults to 7000 (milliseconds - 7 seconds).*
 - `message` - the text of message. *Defaults to no change in the text.*
 - `class` - CSS class(es) with the attributes to use. *Defaults to 'jtoast'.*
 
@@ -79,7 +79,7 @@ Accepts a JSON with the following parameters:
 
 If you look closely, you will notice `timeout` mentioned twice. In one case, `timeout` is listed with the JSON; so it is in the JSON given to `fire()` (et al.). In another case, you may notice that `timeout` is separate, and given as a separate paramter to `extinguish()`.
 
-With `fire()`, the `timeout` is \*time\* before the notification starts to fade. If you do not set the `timeout`, it defaults to 7000 milliseconds (7 seconds). If you set `timeout='0'` (zero as a string), then it \*never fades\*.
+With `fire()`, the `timeout` is the \*time\* before the notification starts to fade. If you do not set the `timeout`, it defaults to 7000 milliseconds (7 seconds). If you set `timeout='0'` (zero as a string), then it \*never fades\*.
 
 With `extinguish()`, the `timeout` is still the \*time\* before the notification starts to fade. However, if you do *not* give a \*timeout\* then the notification immediately starts to fade.  If you set `timeout='0'` (zero as a string), then it \*immediately fades\*.
 
