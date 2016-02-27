@@ -28,11 +28,11 @@ If you look at the code, this is the sequence.
 
 
 
-#### `init()` ####
+### `init()` ###
 - `id`
 - `timeout` 
 
-#### `toggle()` ####
+### `toggle()` ###
 no parameters
 
 #### `message()` ####
