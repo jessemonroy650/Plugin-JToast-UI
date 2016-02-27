@@ -77,11 +77,11 @@ Accepts a JSON with the following parameters:
 
 ### <a name=timeout>Why two `timeout`</a> ###
 
-If you look closely, you will notice `timeout` mentioned twice. In one case, `timeout` is listed with the JSON; so it is in the JSON given to `fire()` (et al.). In another case, you may notice that `timeout` is separate, and given as a separate paramter to `extinguish()`.
+If you look closely, you will notice `timeout` mentioned twice. In one case, `timeout` is listed with the JSON; so it is in the JSON given to `fire()` (et al.). In the other case, you will notice that `timeout` is separate, and given as a separate parameter to `extinguish()`.
 
 With `fire()`, the `timeout` is the \*time\* before the notification starts to fade. If you do not set the `timeout`, it defaults to 7000 milliseconds (7 seconds). If you set `timeout='0'` (zero as a string), then it \*never fades\*.
 
-With `extinguish()`, the `timeout` is still the \*time\* before the notification starts to fade. However, if you do *not* give a \*timeout\* then the notification immediately starts to fade.  If you set `timeout='0'` (zero as a string), then it \*immediately fades\*.
+With `extinguish()`, the `timeout` is still the \*time\* before the notification starts to fade. However, if you do *not* give a \*timeout\* then the notification immediately starts to fade.  If you set `timeout='0'` (zero as a string), then it \*immediately fades\*. CAVEAT: DO NOT USE BOTH `timeout`S WIERD THINGS CAN HAPPEN.
 
 In summation, there are two (2) different `timeout` because each one behaves differently. In one case, it is the time to automatic "fade out". In the other case, it does the same. However, if you fail to set `timeout` or you use `timeout='0'`, then it behaves differently in both cases. This is why it is separate.
 
