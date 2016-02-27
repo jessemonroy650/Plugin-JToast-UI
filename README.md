@@ -3,13 +3,24 @@ a popup notificaion, like toast(), that uses only HTML,CSS, and Javascript
 
 [[LIVE DEMO]()] - [[Blog]()]
 
-## Synopsis ##
+- Synopsis](#synopsis)
+- Methods](#methods)
+  - [init()](#init)
+  - [message()](#message)
+  - [fire()](#fire)
+  - [extingish()](#extingish)
+- [Examples](#examples)
+  - [toast()](#fire)
+  - [alert()](#alert)
+- [Attributes in the CSS](#attrib)
+
+## <a name=synopsis>Synopsis</a> ##
 
 This library is for local notifications. It use a `<div>` popup that uses `postion:absolute`. The notification has only one pane, and therefore only one window for a message. The notification is initially hidden and not visible. Once `fire()` is called, the notification goes through the process of becoming visible. 
 
 The window can be customized via `init()` and `message()`. The window becomes visible with `fire()` and hidden with `extingish()`. You should not have to use `toggle()`.
 
-## Methods ##
+## <a name=method>Methods</a> ##
 
 method        |  purpose
 --------------|-----------
@@ -21,7 +32,7 @@ method        |  purpose
 
 **How the methods work**
 
-If you look at the code, this is the sequence.
+If you look at the code, this is the sequence:
 
 - `fire()` &mdash;> `init()` &mdash;> `message()` &mdash;> `toggle()`
 - `extingish()` &mdash;> `init()` &mdash;> `message()` &mdash;> `toggle()`
@@ -33,31 +44,41 @@ What should be evident is that the calls are scoping. Meaning you can call
 - `fire()` with all the parameters that you would put in `init()` and `message()`
 
 ----
-### `init()` ###
-- `id`
-- `timeout` 
+### <a name=init>`init()`</a> ###
+Accepts a JSON with the following parameters:
+
+- `id` - element `id` of the &lt;div&gt; you are using
+- `timeout` - the amount of time to display the notification (in milliseconds)
 
 ### `toggle()` ###
-no parameters
+NO parameters.
 
-### `message()` ###
-- `message`
-- `class`
+### <a name=message>`message()`</a> ###
+accepts a JSON with the following parameters:
 
-### `fire()` ###
-- `message`
-- `class`
+- `id` - element `id` of the &lt;div&gt; you are using
+- `timeout` - the amount of time to display the notification (in milliseconds)
+- `message` - text of message
+- `class` - a CSS class with the attributes to use
 
-### `extingish()` ###
-- `message`
-- `class`
-- `timeout` 
+### <a name=fire>`fire()`</a> ###
+Accepts a JSON with the following parameters:
 
+- `id` - element `id` of the &lt;div&gt; you are using
+- `timeout` - the amount of time to display the notification (in milliseconds)
+- `message` - text of message
+- `class` - a CSS class with the attributes to use
 
+### <a name=extingish>`extingish()`</a> ###
+Accepts a JSON with the following parameters:
 
-## Examples ##
+- `id` - element `id` of the &lt;div&gt; you are using
+- `message` - text of message
+- `class` - a CSS class with the attributes to use
 
-## <a name=toast>toast()</a> ##
+## <a name=examples>Examples</a> ##
+
+### <a name=toast>toast()</a> ###
 
 **HTML**
 
@@ -71,7 +92,7 @@ no parameters
 
 Calls `jtoast.fire()` with a *message*. It will "fade out" after the default `timeout`. Use `jtoast.init()` to change the `timeout`.
 
-## <a name=alert>alert()</a> ##
+### <a name=alert>alert()</a> ###
 
 **HTML**
 
@@ -95,11 +116,7 @@ Calls `jtoast.fire()` with a *message*. It will "fade out" after the default `ti
 5. close the call
 6. launch the notification and have it automatically fade after the `timeout` (5 seconds).
 
-### How It Use it ###
-
-abc
-
-### Important Appearance Attributes in the CSS ##
+## <a name=attrib>Important Appearance Attributes in the CSS</a> ##
 
 In `jtoast.css`:
 
