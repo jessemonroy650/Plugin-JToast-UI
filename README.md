@@ -1,7 +1,7 @@
 # Plugin-JToast-UI
 a popup notificaion, like toast(), that uses only HTML,CSS, and Javascript
 
-[[LIVE DEMO]()] - [[Blog]()]
+[[LIVE DEMO]()] - [[BLOG]()]
 
 - [Synopsis](#synopsis)
 - [Methods](#methods)
@@ -44,7 +44,7 @@ What should be evident is that the calls are scoping. Meaning you can call
 - `fire()` with all the parameters that you would put in `init()` and `message()`
 
 ----
-### <a name=init>`init()`</a> ###
+### <a name=init>`init(json)`</a> ###
 Accepts a JSON with the following parameters:
 
 - `id` - element `id` of the &lt;div&gt; you are using
@@ -53,7 +53,7 @@ Accepts a JSON with the following parameters:
 ### `toggle()` ###
 NO parameters.
 
-### <a name=message>`message()`</a> ###
+### <a name=message>`message(json)`</a> ###
 accepts a JSON with the following parameters:
 
 - `id` - element `id` of the &lt;div&gt; you are using
@@ -61,7 +61,7 @@ accepts a JSON with the following parameters:
 - `message` - text of message
 - `class` - a CSS class with the attributes to use
 
-### <a name=fire>`fire()`</a> ###
+### <a name=fire>`fire(json)`</a> ###
 Accepts a JSON with the following parameters:
 
 - `id` - element `id` of the &lt;div&gt; you are using
@@ -69,12 +69,16 @@ Accepts a JSON with the following parameters:
 - `message` - text of message
 - `class` - a CSS class with the attributes to use
 
-### <a name=extingish>`extingish()`</a> ###
+### <a name=extingish>`extingish(json, timeout)`</a> ###
 Accepts a JSON with the following parameters:
 
 - `id` - element `id` of the &lt;div&gt; you are using
 - `message` - text of message
 - `class` - a CSS class with the attributes to use
+
+* `timeout` - the amount of time to **wait before hiding** the notification (in milliseconds)
+
+
 
 ## <a name=examples>Examples</a> ##
 
