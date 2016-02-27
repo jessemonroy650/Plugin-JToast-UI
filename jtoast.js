@@ -40,7 +40,7 @@ var jtoast = {
         if (obj) { jtoast.message(obj); }
         jtoast.toggle();        
     },
-    extingish : function (obj, timeout) {
+    extinguish : function (obj, timeout) {
         // change the message, if we have a new one.
         if (obj) { jtoast.message(obj); }
         // remove from screen, after timeout

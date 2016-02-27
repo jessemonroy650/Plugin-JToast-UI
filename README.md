@@ -8,7 +8,7 @@ a popup notificaion, like toast(), that uses only HTML,CSS, and Javascript
   - [init()](#init)
   - [message()](#message)
   - [fire()](#fire)
-  - [extingish()](#extingish)
+  - [extinguish()](#extinguish)
 - [Examples](#examples)
   - [toast()](#fire)
   - [alert()](#alert)
@@ -18,7 +18,7 @@ a popup notificaion, like toast(), that uses only HTML,CSS, and Javascript
 
 This library is for local notifications. It use a `<div>` popup that uses `postion:absolute`. The notification has only one pane, and therefore only one window for a message. The notification is initially hidden and not visible. Once `fire()` is called, the notification goes through the process of becoming visible. 
 
-The window can be customized via `init()` and `message()`. The window becomes visible with `fire()` and hidden with `extingish()`. You should not have to use `toggle()`.
+The window can be customized via `init()` and `message()`. The window becomes visible with `fire()` and hidden with `extinguish()`. You should not have to use `toggle()`.
 
 ## <a name=method>Methods</a> ##
 
@@ -27,7 +27,7 @@ method        |  purpose
 `init()`      | set the `id` and `timeout` to the window 
 `message()`   | set the text and style to the message
 `fire()`      | launch the message &ndash; making it visible
-`extingish()` | manually halt the message &ndash; making it hidden
+`extinguish()` | manually halt the message &ndash; making it hidden
 `toggle()`    | actually make the window hidden and visible
 
 **How the methods work**
@@ -35,7 +35,7 @@ method        |  purpose
 If you look at the code, this is the sequence:
 
 - `fire()` &mdash;> `init()` &mdash;> `message()` &mdash;> `toggle()`
-- `extingish()` &mdash;> `init()` &mdash;> `message()` &mdash;> `toggle()`
+- `extinguish()` &mdash;> `init()` &mdash;> `message()` &mdash;> `toggle()`
 
 What should be evident is that the calls are scoping. Meaning you can call
 
@@ -69,7 +69,7 @@ Accepts a JSON with the following parameters:
 - `message` - text of message
 - `class` - a CSS class with the attributes to use
 
-### <a name=extingish>`extingish(json, timeout)`</a> ###
+### <a name=extinguish>`extinguish(json, timeout)`</a> ###
 Accepts a JSON with the following parameters:
 
 - `id` - element `id` of the &lt;div&gt; you are using
