@@ -1,7 +1,7 @@
 # Plugin-JToast-UI
-a popup notificaion, like toast(), that only uses HTML5,CSS3, and Javascript
+A popup notificaion, like toast(), that only uses HTML5, CSS3, and Javascript.
 
-[[LIVE DEMO]()] - [[BLOG]()]
+[\[LIVE DEMO\]](http://codesnippets.altervista.org/examples/html5/tutorial-toast/) - [\[BLOG\]]()
 
 - [Synopsis](#synopsis)
 - [Methods](#methods)
@@ -81,7 +81,7 @@ If you look closely, you will notice `timeout` mentioned twice. In one case, `ti
 
 With `fire()`, the `timeout` is the \*time\* before the notification starts to fade. If you do not set the `timeout`, it defaults to 7000 milliseconds (7 seconds). If you set `timeout='0'` (zero as a string), then it \*never fades\*.
 
-With `extinguish()`, the `timeout` is still the \*time\* before the notification starts to fade. However, if you do *not* give a \*timeout\* then the notification immediately starts to fade.  If you set `timeout='0'` (zero as a string), then it \*immediately fades\*. CAVEAT: DO NOT USE BOTH `timeout`S WIERD THINGS CAN HAPPEN.
+With `extinguish()`, the `timeout` is still the \*time\* before the notification starts to fade. However, if you do *not* give a \*timeout\* then the notification immediately starts to fade.  If you set `timeout='0'` (zero as a string), then it \*immediately fades\*. CAVEAT: DO NOT USE BOTH `timeout` WITH `extinguish()`, WIERD THINGS CAN HAPPEN.
 
 In summation, there are two (2) different `timeout` because each one behaves differently. In one case, it is the time to automatic "fade out". In the other case, it does the same. However, if you fail to set `timeout` or you use `timeout='0'`, then it behaves differently in both cases. This is why it is separate.
 
@@ -118,10 +118,10 @@ Calls `jtoast.fire()` with a *message*. It will "fade out" after the default `ti
 
 **line by line explanation**
 
-1. Select the div with `id=alert` and set the `timeout` to 5000 (5 seconds)
-2. Call `jtoast.message()`
-3. Set the text to the notification
-4. Modify the class of the message box with the class `alert`
+1. Select the div with `id=alert` and set the `timeout` to *5000* (5 seconds).
+2. Open the call to `jtoast.message()`.
+3. Set the text to the notification.
+4. Modify the class of the message box with the class *custom*
 5. Close the call
 6. Launch the notification and have it automatically fade after the `timeout` (5 seconds).
 
