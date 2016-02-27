@@ -1,5 +1,5 @@
 # Plugin-JToast-UI
-a popup notificaion, like toast(), that uses only HTML,CSS, and Javascript
+a popup notificaion, like toast(), that only uses HTML5,CSS3, and Javascript
 
 [[LIVE DEMO]()] - [[BLOG]()]
 
@@ -9,6 +9,7 @@ a popup notificaion, like toast(), that uses only HTML,CSS, and Javascript
   - [message()](#message)
   - [fire()](#fire)
   - [extinguish()](#extinguish)
+  - [Why two (2) `timeout`](#timeout)
 - [Examples](#examples)
   - [toast()](#fire)
   - [alert()](#alert)
@@ -16,19 +17,23 @@ a popup notificaion, like toast(), that uses only HTML,CSS, and Javascript
 
 ## <a name=synopsis>Synopsis</a> ##
 
-This library is for local notifications. It use a `<div>` popup that uses `postion:absolute`. The notification has only one pane, and therefore only one window for a message. The notification is initially hidden and not visible. Once `fire()` is called, the notification goes through the process of becoming visible. 
+This library is for local notifications. It uses a `<div>` popup that gets positioned with `postion:absolute`. The notification has only one pane, and therefore only one window for a message. This means no title or subject. Hence, the name *jtoast*.
+
+The notification is initially hidden and not visible. Once `fire()` is called, the notification goes through the process of becoming visible. `extinguish()` is used to make the notification hidden and invisible again.
 
 ## <a name=method>Methods</a> ##
 
+There are five (5) methods for this library. If you need it quick, just used `fire()` and `extinguish()`. For more grainular control, there is `init()` and `message()`.
+
 The notification can be customized via `init()` and `message()`. The notification becomes visible with `fire()` and hidden with `extinguish()`. You should not have to use `toggle()`.
 
-method        |  purpose
---------------|-----------
-`init()`      | set the `id` and `timeout` to the notifications 
-`message()`   | set the text and style to the message
-`fire()`      | launch the message &ndash; making it visible
+method         |  purpose
+---------------|-----------
+`init()`       | set the `id` and `timeout` to the notifications 
+`message()`    | set the text and *class* to the message
+`fire()`       | launch the message &ndash; making it visible
 `extinguish()` | manually halt the message &ndash; making it hidden
-`toggle()`    | actually make the notifications hidden and visible
+`toggle()`     | actually make the notifications hidden and visible
 
 **How the methods work**
 
@@ -48,7 +53,7 @@ What should be evident is that the calls are scoping. Meaning you can call
 Accepts a JSON with the following parameters:
 
 - `id` - element `id` of the &lt;div&gt; you are using
-- `timeout` - the amount of time to display the notification (in milliseconds)
+- `timeout` - the amount of time to display the notification (in milliseconds) before fading out.
 
 ### `toggle()` ###
 NO parameters.
@@ -56,10 +61,10 @@ NO parameters.
 ### <a name=message>`message(json)`</a> ###
 Accepts a JSON with the following parameters:
 
-- `id` - element `id` of the &lt;div&gt; you are using
-- `timeout` - the amount of time to display the notification (in milliseconds)
-- `message` - text of message
-- `class` - a CSS class with the attributes to use
+- `id` - the element `id` of the &lt;div&gt; you are using.
+- `timeout` - the amount of time to display the notification (in milliseconds) before fading out.
+- `message` - the text of message
+- `class` - CSS class(es) with the attributes to use
 
 ### <a name=fire>`fire(json)`</a> ###
 
@@ -70,7 +75,15 @@ Accepts a JSON with the following parameters:
 - Accepts the same JSON parameters as [`message()`](#message), except timeout is separate
 - `timeout` - the amount of time to **wait before hiding** the notification (in milliseconds)
 
-*NOTE:* The `timeout` in this method is separate because it is the \*timeout\* before the notification starts to fade. However, if you do *not* give a \*timeout\* then the notification immediately starts to fade to invisibile.
+### <a name=timeout>Why two `timeout`</a> ###
+
+If you look closely, you will notice `timeout` mentioned twice. In one case, `timeout` is list with the JSON; so it is in the JSON given with `fire()` (et al.). In another case, you may notice that `timeout` is separate, and given as a separate paramter to `extinguish()`.
+
+With `fire()`, the `timeout` is \*time\* before the notification starts to fade. If you do not set the `timeout`, it defaults to 7000 milliseconds (7 seconds). If you set `timeout='0'` (zero as a string), then it \*never\* fades.
+
+With `extinguish()`, the `timeout` is still the \*time\* before the notification starts to fade. However, if you do *not* give a \*timeout\* then the notification immediately starts to fade.  If you set `timeout='0'` (zero as a string), then it \*immediately\* fades.
+
+In summation, there are two (2) different `timeout` because each one behaves differently. In one case, it is the time to automatic "fade out". In the other case, it does the same. However, if you fail to set `timeout` or you use `timeout='0'`, then it behaves differently in both cases. This is why it is separate.
 
 ## <a name=examples>Examples</a> ##
 
@@ -82,7 +95,7 @@ Accepts a JSON with the following parameters:
 
 **code**
 
-    `jtoast.fire({'message':'I am toast.'});`
+    jtoast.fire({'message':'I am toast.'});
 
 **explanation**
 
