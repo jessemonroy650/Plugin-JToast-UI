@@ -23,9 +23,8 @@ method        |  purpose
 
 If you look at the code, this is the sequence.
 
-    - `fire() -> `init()` -> `message()`  -> `toggle()`
-
-    - `extingish()` ->  `init()` -> `message()`  -> `toggle()`
+- `fire() -> `init()` -> `message()`  -> `toggle()`
+- `extingish()` ->  `init()` -> `message()`  -> `toggle()`
 
 
 
