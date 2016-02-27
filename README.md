@@ -52,8 +52,8 @@ What should be evident is that the calls are scoping. Meaning you can call
 ### <a name=init>`init(json)`</a> ###
 Accepts a JSON with the following parameters:
 
-- `id` - element `id` of the &lt;div&gt; you are using
-- `timeout` - the amount of time to display the notification (in milliseconds) before fading out.
+- `id` - element `id` of the &lt;div&gt; you are using. *Defaults to 'jtoast'.*
+- `timeout` - the amount of time to display the notification (in milliseconds) before fading out. Defaults to 7000 (milliseconds - 7 seconds). If set to zero (0=string), then it never fades.
 
 ### `toggle()` ###
 NO parameters.
@@ -61,10 +61,10 @@ NO parameters.
 ### <a name=message>`message(json)`</a> ###
 Accepts a JSON with the following parameters:
 
-- `id` - the element `id` of the &lt;div&gt; you are using.
-- `timeout` - the amount of time to display the notification (in milliseconds) before fading out.
-- `message` - the text of message
-- `class` - CSS class(es) with the attributes to use
+- `id` - the element `id` of the &lt;div&gt; you are using. *Defaults to 'jtoast'.*
+- `timeout` - the amount of time to display the notification (in milliseconds) before fading out. Defaults to 7000 (milliseconds - 7 seconds). If set to zero (0=string), then it never fades.
+- `message` - the text of message. *Defaults to no change in the text.*
+- `class` - CSS class(es) with the attributes to use. *Defaults to 'jtoast'.*
 
 ### <a name=fire>`fire(json)`</a> ###
 
@@ -73,15 +73,15 @@ Accepts a JSON with the following parameters:
 ### <a name=extinguish>`extinguish(json, timeout)`</a> ###
 
 - Accepts the same JSON parameters as [`message()`](#message), except timeout is separate
-- `timeout` - the amount of time to **wait before hiding** the notification (in milliseconds)
+- `timeout` - the amount of time to **wait before hiding** the notification (in milliseconds). Defaults to immediate fade. If set to zero (0=string), then it immediately fades.
 
 ### <a name=timeout>Why two `timeout`</a> ###
 
-If you look closely, you will notice `timeout` mentioned twice. In one case, `timeout` is list with the JSON; so it is in the JSON given with `fire()` (et al.). In another case, you may notice that `timeout` is separate, and given as a separate paramter to `extinguish()`.
+If you look closely, you will notice `timeout` mentioned twice. In one case, `timeout` is listed with the JSON; so it is in the JSON given to `fire()` (et al.). In another case, you may notice that `timeout` is separate, and given as a separate paramter to `extinguish()`.
 
-With `fire()`, the `timeout` is \*time\* before the notification starts to fade. If you do not set the `timeout`, it defaults to 7000 milliseconds (7 seconds). If you set `timeout='0'` (zero as a string), then it \*never\* fades.
+With `fire()`, the `timeout` is \*time\* before the notification starts to fade. If you do not set the `timeout`, it defaults to 7000 milliseconds (7 seconds). If you set `timeout='0'` (zero as a string), then it \*never fades\*.
 
-With `extinguish()`, the `timeout` is still the \*time\* before the notification starts to fade. However, if you do *not* give a \*timeout\* then the notification immediately starts to fade.  If you set `timeout='0'` (zero as a string), then it \*immediately\* fades.
+With `extinguish()`, the `timeout` is still the \*time\* before the notification starts to fade. However, if you do *not* give a \*timeout\* then the notification immediately starts to fade.  If you set `timeout='0'` (zero as a string), then it \*immediately fades\*.
 
 In summation, there are two (2) different `timeout` because each one behaves differently. In one case, it is the time to automatic "fade out". In the other case, it does the same. However, if you fail to set `timeout` or you use `timeout='0'`, then it behaves differently in both cases. This is why it is separate.
 
@@ -116,7 +116,7 @@ Calls `jtoast.fire()` with a *message*. It will "fade out" after the default `ti
     });
     jtoast.fire();
 
-**explanation**
+**line by line explanation**
 
 1. Select the div with `id=alert` and set the `timeout` to 5000 (5 seconds)
 2. Call `jtoast.message()`
